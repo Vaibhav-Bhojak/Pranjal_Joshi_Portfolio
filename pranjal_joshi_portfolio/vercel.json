@@ -1,13 +1,21 @@
 {
   "version": 2,
-  "name": "laravel-frontend",
-  "builds": [
-    {
-      "src": "public/**/*",
-      "use": "@vercel/static"
+  "framework": "null",
+  "functions": {
+    "api/index.php": {
+      "runtime": "vercel-php@0.6.0"
     }
-  ],
+  },  
   "routes": [
     { "src": "/(.*)", "dest": "/public/$1" }
-  ]
+  ],
+  "env": {
+    "APP_ENV": "production",
+    "APP_KEY": "base64:a5d4sWxGEbvcCBUiB5pHoc+A4RawJvgyL7djTaKEf1U=",
+    "APP_DEBUG": "false",
+    "APP_URL": "https://pranjal-joshi-portfolio.vercel.app",
+    "LOG_CHANNEL": "stderr",
+    "CACHE_DRIVER": "array",
+    "SESSION_DRIVER": "array"
+}
 }
