@@ -1,46 +1,19 @@
-# ---------- Base PHP Image ----------
-FROM php:8.2-cli
+FROM php:8.2-fpm
 
-# ---------- System Dependencies ----------
 RUN apt-get update && apt-get install -y \
-    git \
-    curl \
-    unzip \
-    libzip-dev \
-    libpng-dev \
-    libonig-dev \
-    libxml2-dev \
-    libpq-dev \
-    && docker-php-ext-install \
-    pdo \
-    pdo_mysql \
-    pdo_pgsql \
-    zip \
-    gd
+    git curl zip unzip libpng-dev libonig-dev libxml2-dev \
+    && docker-php-ext-install pdo pdo_mysql mbstring exif pcntl bcmath gd
 
-# ---------- Install Composer ----------
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# ---------- Set Working Directory ----------
 WORKDIR /var/www
 
-# ---------- Copy Project ----------
 COPY . .
 
-# ---------- Install Laravel Dependencies ----------
 RUN composer install --no-dev --optimize-autoloader
 
-# ---------- Laravel Setup ----------
-RUN php artisan config:clear || true
-RUN php artisan cache:clear || true
-RUN php artisan route:clear || true
-RUN php artisan view:clear || true
+RUN chmod -R 775 storage bootstrap/cache || true
 
-# ---------- Permissions ----------
-RUN chmod -R 775 storage bootstrap/cache
+EXPOSE 8000
 
-# ---------- Render uses dynamic PORT ----------
-EXPOSE 10000
-
-# ---------- Start Laravel ----------
-CMD php artisan serve --host=0.0.0.0 --port=10000
+CMD php artisan serve --host=0.0.0.0 --port=8000
