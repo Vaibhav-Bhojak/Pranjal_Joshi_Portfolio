@@ -380,6 +380,7 @@
 
         <!-- Contact Form -->
         <div class="p-12 lg:p-16">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d3320.579302123155!2d75.75766011059255!3d26.94246905871433!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1s6A-7%2C%202nd%20Floor%2C%20Patel%20Nagar%2C%20Kalwar%20Road%2C%20Circle%2C%20near%20DMB%2C%20Jhotwara%2C%20Jaipur%2C%20Rajasthan%20302012!5e1!3m2!1sen!2sin!4v1771743097805!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
       </div>
     </div>
