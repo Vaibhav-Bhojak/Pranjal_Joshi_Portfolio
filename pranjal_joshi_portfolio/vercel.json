@@ -10,7 +10,9 @@
     { "src": "api/index.php", "use": "@vercel/php" }
   ],
   "routes": [
-    { "src": "/(.*)", "dest": "/public/$1" }
+    { "src": "/(.*)", "dest": "/public/$1" },
+
+    [ "handle", "filesystem" ],
   ],
   "env": {
     "APP_ENV": "production",
