@@ -25,6 +25,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::middleware('admin.auth')->group(function () {
         Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
         Route::get('/appointments', [AdminController::class, 'list'])->name('list');
-        Route::resource('/', AdminController::class)->parameters(['' => 'admin']);
-    });
+        });
+    Route::resource('/', AdminController::class)->parameters(['' => 'admin']);
 });
